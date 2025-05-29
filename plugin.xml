@@ -2,8 +2,8 @@
 <plugin id="LocalNotificationsPlugin" version="1.0.0"
     xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <name>outsystems-plugin-localnotifications</name>
-    <js-module name="outsystems-plugin-localnotifications" src="www/localnotifications.js">
+    <name>LocalNotifications</name>
+    <js-module name="LocalNotifications" src="www/localnotifications.js">
         <clobbers target="cordova.plugins.localnotifications" />
     </js-module>
     <platform name="android">
@@ -18,8 +18,8 @@
     <platform name="ios">
         <dependency id="cordova-plugin-add-swift-support" url="https://github.com/os-adv-dev/cordova-plugin-add-swift-support.git" />
         <config-file parent="/*" target="config.xml">
-            <feature name="outsystems-plugin-localnotifications">
-                <param name="ios-package" value="outsystems-plugin-localnotifications" />
+            <feature name="LocalNotifications">
+                <param name="ios-package" value="LocalNotifications" />
             </feature>
         </config-file>
         <source-file src="src/ios/LocalNotifications.swift" />
