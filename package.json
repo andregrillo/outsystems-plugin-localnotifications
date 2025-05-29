@@ -1,0 +1,27 @@
+{
+  "name": "LocalNotificationsPlugin",
+  "version": "1.0.0",
+  "description": "A cordova plugin that shows local notifications",
+  "cordova": {
+    "id": "LocalNotificationsPlugin",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andregrillo/cordova-plugin-localnotifications.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "author": "Andre Grillo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andregrillo/cordova-plugin-localnotifications/issues"
+  },
+  "homepage": "https://github.com/andregrillo/cordova-plugin-localnotifications#readme"
+}
