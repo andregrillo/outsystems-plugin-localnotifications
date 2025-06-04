@@ -3,8 +3,8 @@ import Foundation
 @objc(LocalNotifications)
 class LocalNotifications: CDVPlugin {
     
-    @objc(coolMethod:)
-    func coolMethod(command: CDVInvokedUrlCommand) {
+    @objc(setLocalNotifications:)
+    func setLocalNotifications(command: CDVInvokedUrlCommand) {
         print("Cool method called")
         
         sendPluginResult(status: .ok, message: "Everything went ok", callbackId: command.callbackId)
