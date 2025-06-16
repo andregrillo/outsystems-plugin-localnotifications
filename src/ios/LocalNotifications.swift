@@ -6,9 +6,27 @@ class LocalNotifications: CDVPlugin {
     
     @objc(setLocalNotifications:)
     func setLocalNotifications(command: CDVInvokedUrlCommand) {
-        print("Cool method called")
         
-        sendPluginResult(status: .ok, message: "All good", callbackId: command.callbackId)
+        if !command.arguments.isEmpty, let title = command.arguments[0] as? String, let subtitle = command.arguments[1] as? String {
+            let content = UNMutableNotificationContent()
+            content.title = title
+            content.subtitle = subtitle
+            content.sound = UNNotificationSound.default
+
+            // show this notification five seconds from now
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+
+            // choose a random identifier
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+
+            // add our notification request
+            UNUserNotificationCenter.current().add(request)
+            
+            sendPluginResult(status: .ok, message: "All good", callbackId: command.callbackId)
+        } else {
+            self.sendPluginResult(status: .error, message: "Error: Missing arguments!", callbackId: command.callbackId)
+        }
+        
     }
     
     @objc(checkPermissions:)
