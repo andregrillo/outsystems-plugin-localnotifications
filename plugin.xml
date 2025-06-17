@@ -8,12 +8,12 @@
     </js-module>
     <platform name="android">
         <config-file parent="/*" target="res/xml/config.xml">
-            <feature name="outsystems-plugin-localnotifications">
-                <param name="android-package" value="LocalNotificationsPlugin.outsystems-plugin-localnotifications" />
+            <feature name="LocalNotifications">
+                <param name="android-package" value="com.outsystems.localnotifications.LocalNotifications" />
             </feature>
         </config-file>
         <config-file parent="/*" target="AndroidManifest.xml" />
-        <source-file src="src/android/LocalNotifications.java" target-dir="src/LocalNotificationsPlugin/outsystems-plugin-localnotifications" />
+        <source-file src="src/android/LocalNotifications.java" target-dir="src/com/outsystems/localnotifications" />
     </platform>
     <platform name="ios">
         <dependency id="cordova-plugin-add-swift-support" url="https://github.com/os-adv-dev/cordova-plugin-add-swift-support.git" />
