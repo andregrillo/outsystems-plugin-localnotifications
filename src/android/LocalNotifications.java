@@ -30,8 +30,16 @@ public class LocalNotifications extends CordovaPlugin {
             scheduleNotification(title, subtitle, delayInSeconds, callbackContext);
             return true;
         } else if ("checkPermissions".equals(action)) {
-            // No permission needed for local notifications on Android by default
-            callbackContext.success("Permission IS allowed!");
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                if (cordova.hasPermission(Manifest.permission.POST_NOTIFICATIONS)) {
+                    callbackContext.success("granted");
+                } else {
+                    permissionCallbackContext = callbackContext;
+                    cordova.requestPermission(this, REQUEST_POST_NOTIFICATIONS, Manifest.permission.POST_NOTIFICATIONS);
+                }
+            } else {
+                callbackContext.success("granted");
+            }
             return true;
         }
 
