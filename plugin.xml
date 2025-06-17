@@ -12,7 +12,10 @@
                 <param name="android-package" value="com.outsystems.localnotifications.LocalNotifications" />
             </feature>
         </config-file>
-        <config-file parent="/*" target="AndroidManifest.xml" />
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+            <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+        </config-file>
         <source-file src="src/android/LocalNotifications.java" target-dir="src/com/outsystems/localnotifications" />
     </platform>
     <platform name="ios">
