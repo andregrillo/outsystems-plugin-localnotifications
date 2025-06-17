@@ -12,11 +12,17 @@ import android.os.Build;
 import androidx.core.app.NotificationCompat;
 
 import org.apache.cordova.*;
+import android.Manifest;
+import android.content.pm.PackageManager;
+import org.apache.cordova.CallbackContext;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
 public class LocalNotifications extends CordovaPlugin {
+
+    private static final int REQUEST_POST_NOTIFICATIONS = 100;
+    private CallbackContext permissionCallbackContext;
 
     private static final String CHANNEL_ID = "LOCAL_NOTIFICATION_CHANNEL";
 
@@ -77,6 +83,18 @@ public class LocalNotifications extends CordovaPlugin {
             if (notificationManager != null) {
                 notificationManager.createNotificationChannel(channel);
             }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionResult(int requestCode, String[] permissions, int[] grantResults) throws JSONException {
+        if (requestCode == REQUEST_POST_NOTIFICATIONS) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                permissionCallbackContext.success("granted");
+            } else {
+                permissionCallbackContext.error("denied");
+            }
+            permissionCallbackContext = null;
         }
     }
 
